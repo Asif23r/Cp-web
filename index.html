@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Point Coaching Centre & Ajlan Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0369a1',
+                        secondary: '#0d9488',
+                        accent: '#0891b2',
+                        light: '#f0f9ff',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .hero-slide {
+            animation: slideAnimation 15s infinite;
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .hero-slide:nth-child(1) {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400' viewBox='0 0 800 400'%3E%3Crect width='800' height='400' fill='%230369a1'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='24' fill='white' text-anchor='middle' dominant-baseline='middle'%3EStudents studying in classroom%3C/text%3E%3C/svg%3E");
+            animation-delay: 0s;
+        }
+        
+        .hero-slide:nth-child(2) {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400' viewBox='0 0 800 400'%3E%3Crect width='800' height='400' fill='%230d9488'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='24' fill='white' text-anchor='middle' dominant-baseline='middle'%3ELibrary with students reading%3C/text%3E%3C/svg%3E");
+            animation-delay: 5s;
+        }
+        
+        .hero-slide:nth-child(3) {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400' viewBox='0 0 800 400'%3E%3Crect width='800' height='400' fill='%230891b2'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='24' fill='white' text-anchor='middle' dominant-baseline='middle'%3EStudents taking competitive exams%3C/text%3E%3C/svg%3E");
+            animation-delay: 10s;
+        }
+        
+        @keyframes slideAnimation {
+            0%, 30% { opacity: 1; }
+            33%, 100% { opacity: 0; }
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            background-color: #0891b2;
+            bottom: -8px;
+            left: 0;
+        }
+        
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #0891b2;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(-100%);
+        }
+        
+        .mobile-menu.show {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- Header -->
+    <header class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl mr-3">CP</div>
+                <div>
+                    <h1 class="text-xl font-bold text-primary">Career Point Coaching Centre</h1>
+                    <p class="text-xs text-gray-600">Coaching + Library for Smarter Learning</p>
+                </div>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link text-gray-700 hover:text-primary font-medium">Home</a>
+                <a href="#coaching" class="nav-link text-gray-700 hover:text-primary font-medium">Coaching</a>
+                <a href="#library" class="nav-link text-gray-700 hover:text-primary font-medium">Library</a>
+                <a href="#contact" class="nav-link text-gray-700 hover:text-primary font-medium">Contact</a>
+            </nav>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="mobile-menu fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-50 md:hidden">
+            <div class="p-4 border-b">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-lg font-bold text-primary">Menu</h2>
+                    <button id="close-menu" class="text-gray-700 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="py-4">
+                <a href="#home" class="block px-4 py-2 text-gray-700 hover:bg-primary hover:text-white">Home</a>
+                <a href="#coaching" class="block px-4 py-2 text-gray-700 hover:bg-primary hover:text-white">Coaching</a>
+                <a href="#library" class="block px-4 py-2 text-gray-700 hover:bg-primary hover:text-white">Library</a>
+                <a href="#contact" class="block px-4 py-2 text-gray-700 hover:bg-primary hover:text-white">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen pt-16">
+        <div class="hero-slider h-full relative overflow-hidden">
+            <div class="hero-slide"></div>
+            <div class="hero-slide"></div> 
+            <div class="hero-slide"></div>
+        </div>
+        <div class="absolute inset-0 flex items-center justify-center text-center px-4">
+            <div class="bg-black bg-opacity-50 p-8 rounded-lg max-w-2xl">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Build Your Career with Us</h1>
+                <p class="text-xl text-white mb-8">From Class 5 to 10 + Competitive Exams like Navodaya, NMMS, AMU</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#coaching" class="bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-md transition duration-300 shadow-lg">Explore Coaching</a>
+                    <a href="#library" class="bg-secondary hover:bg-secondary/90 text-white font-medium py-3 px-6 rounded-md transition duration-300 shadow-lg">Visit Library</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coaching Info Section -->
+    <section id="coaching" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl font-bold text-gray-800 mb-4">About Career Point Coaching Centre</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Providing quality education and guidance to help students achieve their academic goals.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="bg-light p-8 rounded-lg shadow-lg">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-semibold text-primary mb-2">Our Details</h3>
+                        <div class="flex items-start mb-3">
+                            <div class="text-accent mr-3 mt-1"><i class="fas fa-map-marker-alt"></i></div>
+                            <p class="text-gray-700"><span class="font-medium">Address:</span> Mustakim Market, Sigori, Paliganj, Patna</p>
+                        </div>
+                        <div class="flex items-start mb-3">
+                            <div class="text-accent mr-3 mt-1"><i class="fas fa-user-tie"></i></div>
+                            <p class="text-gray-700"><span class="font-medium">Director:</span> Md Sajid</p>
+                        </div>
+                        <div class="flex items-start mb-3">
+                            <div class="text-accent mr-3 mt-1"><i class="fas fa-phone-alt"></i></div>
+                            <p class="text-gray-700"><span class="font-medium">Contact:</span> +91 79790 19154</p>
+                        </div>
+                        <div class="flex items-start mb-3">
+                            <div class="text-accent mr-3 mt-1"><i class="fas fa-coins"></i></div>
+                            <p class="text-gray-700"><span class="font-medium">Fee:</span> Very affordable</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-semibold text-primary mb-6">What We Offer</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="feature-card bg-white p-6 rounded-lg shadow-md border-l-4 border-primary">
+                            <h4 class="text-lg font-semibold mb-2">Class 5 to 10</h4>
+                            <p class="text-gray-600">Comprehensive coaching for all subjects with experienced teachers.</p>
+                        </div>
+                        <div class="feature-card bg-white p-6 rounded-lg shadow-md border-l-4 border-secondary">
+                            <h4 class="text-lg font-semibold mb-2">Navodaya Exam</h4>
+                            <p class="text-gray-600">Specialized coaching for Jawahar Navodaya Vidyalaya entrance.</p>
+                            </div>
+                        <div class="feature-card bg-white p-6 rounded-lg shadow-md border-l-4 border-accent">
+                            <h4 class="text-lg font-semibold mb-2">NMMS Preparation</h4>
+                            <p class="text-gray-600">Expert guidance for National Means-cum-Merit Scholarship exam.</p>
+                        </div>
+                        <div class="feature-card bg-white p-6 rounded-lg shadow-md border-l-4 border-primary">
+                            <h4 class="text-lg font-semibold mb-2">AMU Entrance</h4>
+                            <p class="text-gray-600">Dedicated coaching for Aligarh Muslim University entrance tests.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Library Section -->
+    <section id="library" class="py-20 bg-gradient-to-br from-primary/5 to-secondary/5">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl font-bold text-gray-800 mb-4">Ajlan Library Features</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">A quiet and comfortable space for focused study and research.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="feature-card bg-white p-6 rounded-lg shadow-md">
+                            <div class="text-accent text-3xl mb-4"><i class="fas fa-wifi"></i></div>
+                            <h4 class="text-lg font-semibold mb-2">5G Internet Access</h4>
+                            <p class="text-gray-600">High-speed internet for research and online learning resources.</p>
+                        </div>
+                        <div class="feature-card bg-white p-6 rounded-lg shadow-md">
+                            <div class="text-accent text-3xl mb-4"><i class="fas fa-couch"></i></div>
+                            <h4 class="text-lg font-semibold mb-2">Comfortable Reading Space</h4>
+                            <p class="text-gray-600">Well-designed environment for extended study sessions.</p>
+                        </div>
+                        <div class="feature-card bg-white p-6 rounded-lg shadow-md">
+                            <div class="text-accent text-3xl mb-4"><i class="fas fa-rupee-sign"></i></div>
+                            <h4 class="text-lg font-semibold mb-2">Affordable Fees</h4>
+                            <p class="text-gray-600">Just ₹300 per student for library access.</p>
+                        </div>
+                        <div class="feature-card bg-white p-6 rounded-lg shadow-md">
+                            <div class="text-accent text-3xl mb-4"><i class="fas fa-clock"></i></div>
+                            <h4 class="text-lg font-semibold mb-2">Flexible Shift System</h4>
+                            <p class="text-gray-600">5-hour flexible shifts to accommodate your schedule.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-1 md:order-2">
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold text-primary mb-6">Why Choose Our Library?</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <div class="text-accent mr-3 mt-1"><i class="fas fa-check-circle"></i></div>
+                                <p class="text-gray-700">Quiet and distraction-free environment</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="text-accent mr-3 mt-1"><i class="fas fa-check-circle"></i></div>
+                                <p class="text-gray-700">Access to reference books and study materials</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="text-accent mr-3 mt-1"><i class="fas fa-check-circle"></i></div>
+                                <p class="text-gray-700">Guidance from experienced mentors when needed</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="text-accent mr-3 mt-1"><i class="fas fa-check-circle"></i></div>
+                                <p class="text-gray-700">Peer learning opportunities</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="text-accent mr-3 mt-1"><i class="fas fa-check-circle"></i></div>
+                                <p class="text-gray-700">Regular updates to resources and materials</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl font-bold text-gray-800 mb-4">Get in Touch</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Have questions? Reach out to us and we'll get back to you soon.</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12">
+                <div class="bg-light p-8 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold text-primary mb-6">Contact Information</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="text-accent text-xl mr-4 mt-1"><i class="fas fa-map-marker-alt"></i></div>
+                            <div>
+                                <h4 class="font-medium">Address</h4>
+                                <p class="text-gray-700">Mustakim Market, Sigori, Paliganj, Patna</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="text-accent text-xl mr-4 mt-1"><i class="fas fa-phone-alt"></i></div>
+                            <div>
+                                <h4 class="font-medium">Phone</h4>
+                                <p class="text-gray-700">+91 79790 19154</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="text-accent text-xl mr-4 mt-1"><i class="fas fa-clock"></i></div>
+                            <div>
+                                <h4 class="font-medium">Hours</h4>
+                                <p class="text-gray-700">Monday - Saturday: 9:00 AM - 6:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <form id="contactForm" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                        <div>
+                            <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" required>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" required></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-md transition duration-300 shadow-lg flex items-center justify-center">
+                                <i class="fab fa-telegram-plane mr-2"></i> Send via Telegram
+                            </button>
+                        </div>
+                        <div id="formStatus" class="text-center hidden"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Career Point Coaching & Ajlan Library</h3>
+                    <p class="text-gray-400 mb-6">Providing quality education and a conducive learning environment for students to excel.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://t.me/+917979019154" class="text-white hover:text-accent transition duration-300">
+                            <i class="fab fa-telegram text-2xl"></i>
+                        </a>
+                        <a href="tel:+917979019154" class="text-white hover:text-accent transition duration-300">
+                            <i class="fas fa-phone-alt text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="#coaching" class="text-gray-400 hover:text-white transition duration-300">Coaching</a></li>
+                        <li><a href="#library" class="text-gray-400 hover:text-white transition duration-300">Library</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">&copy; 2023 Career Point Coaching Centre. All rights reserved.</p>
+                <div class="text-gray-400 text-sm flex items-center">
+                    <span>Website developed by</span>
+                    <a href="https://asif23r.github.io/Raaz-Web-/" class="text-accent hover:text-white ml-1 transition duration-300 flex items-center">
+                        Raaz <i class="fas fa-code ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('show');
+        });
+        
+        closeMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('show');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('show');
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Contact Form Submission
+        const contactForm = document.getElementById('contactForm');
+        const formStatus = document.getElementById('formStatus');
+        
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+            
+            const botToken = '7872751361:AAFX9seTY1upYixwLmerG8zcBFj6D8Pih0I';
+            const chatId = '5260776753';
+            
+            const text = New Contact Form Submission\n\nName: ${name}\nPhone: ${phone}\nMessage: ${message};
+            
+            formStatus.classList.remove('hidden', 'text-green-500', 'text-red-500');
+            formStatus.textContent = 'Sending message...';
+            formStatus.classList.add('text-gray-500');
+            
+            try {
+                const response = await fetch(https://api.telegram.org/bot${botToken}/sendMessage, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: text
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.ok) {
+                    formStatus.textContent = 'Message sent successfully!';
+                    formStatus.classList.add('text-green-500');
+                    contactForm.reset();
+                } else {
+                    throw new Error('Failed to send message');
+                }
+            } catch (error) {
+                formStatus.textContent = 'Failed to send message. Please try again later.';
+                formStatus.classList.add('text-red-500');
+                console.error('Error:', error);
+            }
+            
+            formStatus.classList.remove('hidden');
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93c1244807117f28',t:'MTc0NjYyNTM1OS4wMDAwMDA='};vara=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
